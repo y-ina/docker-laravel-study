@@ -1,0 +1,16 @@
+<html>
+    <head>
+        <title>@yield('title')</title>
+    </head>
+    <body>
+        <ul>
+            @section('menu')
+            <li>共通メニュー1</li>
+            <li>共通メニュー2</li>
+            @show
+        </ul>
+        <div>
+            @yield('content')
+        </div>
+    </body>
+</html>
