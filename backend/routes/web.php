@@ -47,3 +47,7 @@ Route::post('sample/request-json2', 'SampleController@requestJson2');
 
 //前処理、後処理を実装
 Route::get('sample/before-after', 'SampleController@beforeAfter')->middleware('groupSample')->middleware('routeSample');
+
+//バリデーションで追記
+Route::get('sample/validation1', 'SampleController@validation1');
+Route::post('sample/validation2', 'SampleController@validation2');

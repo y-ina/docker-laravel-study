@@ -146,6 +146,13 @@ return [
     |
     */
 
-    'attributes' => [],
+    //学習で追記
+    'SampleRule' => ':attribute does not match the secret word.',
+
+    'attributes' => [
+        'sample_input'               => 'sample word1',
+        'single_array.sample_input'  => 'sample word2',
+        'multi_array.*.sample_input' => 'sample word3',
+    ],
 
 ];

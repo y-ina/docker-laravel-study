@@ -6,6 +6,12 @@ use Illuminate\Http\Request;
 
 use Illuminate\Http\Response;
 
+//学習で追記
+use App\Http\Requests\SampleRequest;
+
+
+
+
 class SampleController extends Controller
 {
     /**
@@ -281,6 +287,19 @@ class SampleController extends Controller
         error_log("SampleController\n", 3, dirname(dirname(__FILE__)) . DIRECTORY_SEPARATOR . "Middleware" . DIRECTORY_SEPARATOR  . "sample.log");
 
         return view('sample.beforeAfter');
+    }
+
+    public function validation1()
+    {
+        return view('sample.validation1');
+    }
+
+    public function validation2(SampleRequest $request)
+    {
+        $data = [
+            'msg' => '入力チェックOK',
+        ];
+        return view('sample.validation2', $data);
     }
 
 }
