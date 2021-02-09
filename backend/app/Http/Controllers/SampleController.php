@@ -302,4 +302,19 @@ class SampleController extends Controller
         return view('sample.validation2', $data);
     }
 
+    public function redirect1(Request $request)
+    {
+        return view('sample.redirect1');
+    }
+
+    public function redirect2(Request $request)
+    {
+        return redirect('sample/redirect3')->withInput();
+    }
+
+    public function redirect3(Request $request)
+    {
+        return view('sample.redirect3');
+    }
+
 }

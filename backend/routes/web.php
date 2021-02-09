@@ -51,3 +51,8 @@ Route::get('sample/before-after', 'SampleController@beforeAfter')->middleware('g
 //バリデーションで追記
 Route::get('sample/validation1', 'SampleController@validation1');
 Route::post('sample/validation2', 'SampleController@validation2');
+
+//リダイレクト処理
+Route::get('sample/redirect1', 'SampleController@redirect1');
+Route::post('sample/redirect2', 'SampleController@redirect2');
+Route::get('sample/redirect3', 'SampleController@redirect3');
