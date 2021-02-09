@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Http\Response;
+
 class SampleController extends Controller
 {
     /**
@@ -160,4 +162,125 @@ class SampleController extends Controller
         ];
         return view('sample.session2', $data);
     }
+
+    //うまく動作しなかった為再度違うやり方を調べる
+    // public function upload(Request $request)
+    // {
+    //     $file = $request->file('a');
+
+    //     if (!is_null($file)) {
+    //         date_default_timezone_set('Asia/Tokyo');
+
+    //         $originalName = $file->getClientOriginalName();
+    //         $micro = explode(" ", microtime());
+    //         $fileTail = date("Ymd_His", $micro[1]) . '_' . (explode('.', $micro[0])[1]);
+
+    //         $dir = 'upFiles';
+    //         $fileName = $originalName . '.' . $fileTail;
+    //         $file->storeAs($dir, $fileName, ['disk' => 'local']);
+    //     }
+
+    //     return view('sample.upload');
+    // }
+
+    //   public function download1()
+    // {
+    //     return view('sample.download');
+    // }
+
+    // public function download2(Request $request, Response $response)
+    // {
+    //     $this->sendHeader($response, 'sample.txt', 'text/plain');
+
+    //     for ($row = 0; $row < 100; $row++) {
+
+    //         $line = '';
+    //         for ($col = 0; $col < 10; $col++) {
+    //             $line .= $col;
+    //             $line .= "\t";
+    //         }
+    //         $line .= "\n";
+
+    //         $this->sendContentBody($line);
+
+    //     }
+
+    //     $this->sendContentEnd();
+
+    //     exit;
+    // }
+
+    // private function sendHeader($response, $fileName, $mimeType){
+
+    //     $response->setProtocolVersion('1.1');
+    //     $response->headers->replace([
+    //         'Content-Type' => $mimeType,
+    //         'Content-Disposition' => 'attachment; filename="' . $fileName . '"',
+    //         'Transfer-Encoding' => 'chunked'
+    //     ]);
+    //     $response->sendHeaders();
+
+    //     ob_flush();
+    //     flush();
+
+    // }
+
+    // private function sendContentBody($line){
+
+    //     echo dechex(strlen($line));
+    //     echo "\r\n";
+    //     echo $line;
+    //     echo "\r\n";
+
+    //     ob_flush();
+    //     flush();
+    // }
+
+    // private function sendContentEnd(){
+
+    //     echo '0';
+    //     echo "\r\n";
+    //     echo "\r\n";
+
+    //     ob_flush();
+    //     flush();
+
+    // }
+
+    public function json1(Request $request)
+    {
+        return view('sample.json');
+    }
+
+    public function json2(Request $request)
+    {
+        $data = [
+            'a' => $request->input('a'),
+            'b' => $request->input('b')
+        ];
+        return $data;
+    }
+
+    public function requestJson1(Request $request)
+    {
+        return view('sample.requestJson');
+    }
+
+    public function requestJson2(Request $request)
+    {
+        $data = [
+            'a' => $request->input('a'),
+            'b' => $request->input('b.bb'),
+            'c' => $request->input('c')['cc']
+        ];
+        return $data;
+    }
+
+    public function beforeAfter(Request $request)
+    {
+        error_log("SampleController\n", 3, dirname(dirname(__FILE__)) . DIRECTORY_SEPARATOR . "Middleware" . DIRECTORY_SEPARATOR  . "sample.log");
+
+        return view('sample.beforeAfter');
+    }
+
 }

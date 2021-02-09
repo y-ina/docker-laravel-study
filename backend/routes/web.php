@@ -32,3 +32,18 @@ Route::post('sample/post', 'SampleController@post');
 
 Route::get('sample/session1', 'SampleController@session1');
 Route::get('sample/session2', 'SampleController@session2');
+
+// Route::resource('sample/upload', 'SampleController@upload');
+
+// Route::get('sample/download1', 'SampleController@download1');
+// Route::post('sample/download2', 'SampleController@download2');
+
+Route::get('sample/json1', 'SampleController@json1');
+Route::post('sample/json2', 'SampleController@json2');
+
+//
+Route::get('sample/request-json1', 'SampleController@requestJson1');
+Route::post('sample/request-json2', 'SampleController@requestJson2');
+
+//前処理、後処理を実装
+Route::get('sample/before-after', 'SampleController@beforeAfter')->middleware('groupSample')->middleware('routeSample');

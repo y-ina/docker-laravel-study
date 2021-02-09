@@ -1,0 +1,11 @@
+before GlobalSample
+after GlobalSample
+before GlobalSample
+before GroupSample1
+before GroupSample2
+before RouteSample
+SampleController
+after RouteSample
+after GroupSample2
+after GroupSample1
+after GlobalSample
